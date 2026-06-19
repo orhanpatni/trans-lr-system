@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TRANS LR Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+}
+
+/* ======================
+   MAIN LAYOUT
+====================== */
+
+.layout{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ======================
+   SIDEBAR
+====================== */
+
+.sidebar{
+    width:260px;
+    background:#0f172a;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    box-shadow:2px 0 10px rgba(0,0,0,0.15);
+}
+
+.logo{
+    padding:25px;
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+    background:#1e293b;
+    border-bottom:1px solid #334155;
+}
+
+.sidebar a{
+    color:white;
+    text-decoration:none;
+    padding:16px 22px;
+    border-bottom:1px solid #1e293b;
+    transition:0.3s;
+    font-size:15px;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+    padding-left:35px;
+}
+
+/* ======================
+   CONTENT AREA
+====================== */
+
+.main-content{
+    flex:1;
+}
+
+/* ======================
+   HEADER
+====================== */
+
+.header{
+    background:#1e3a8a;
+    color:white;
+    padding:20px;
+    font-size:28px;
+    font-weight:bold;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+}
+
+/* ======================
+   DASHBOARD
+====================== */
+
+.dashboard{
+    padding:25px;
+}
+
+.card-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card-title{
+    color:#64748b;
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.card-value{
+    font-size:34px;
+    font-weight:bold;
+    color:#1e3a8a;
+}
+
+/* ======================
+   FOOTER
+====================== */
+
+.footer{
+    margin-top:30px;
+    text-align:center;
+    color:#64748b;
+    font-size:14px;
+}
+
+/* ======================
+   MOBILE
+====================== */
+
+@media(max-width:768px){
+
+    .layout{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+            TRANS LR
+        </div>
+
+        <a href="dashboard.html">📊 Dashboard</a>
+
+        <a href="booking.html">📝 LR Booking</a>
+
+        <a href="lr-register.html">📋 LR Register</a>
+
+        <a href="search-lr.html">🔍 Search LR</a>
+
+        <a href="revenue-report.html">📈 Revenue Report</a>
+
+        <a href="destination-report.html">🚚 Destination Report</a>
+
+        <a href="article-report.html">📦 Article Report</a>
+
+        <a href="customer-master.html">👤 Customer Master</a>
+
+        <a href="branch-master.html">🏢 Branch Master</a>
+
+        <a href="settings.html">⚙ Settings</a>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+        <div class="header">
+            TRANS LR MANAGEMENT DASHBOARD
+        </div>
+
+        <div class="dashboard">
+
+            <div class="card-container">
+
+                <div class="card">
+                    <div class="card-title">
+                        Total LR
+                    </div>
+
+                    <div class="card-value" id="totalLR">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        Total Revenue
+                    </div>
+
+                    <div class="card-value">
+                        ₹ <span id="totalRevenue">0</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        Today's LR
+                    </div>
+
+                    <div class="card-value" id="todayLR">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        Today's Revenue
+                    </div>
+
+                    <div class="card-value">
+                        ₹ <span id="todayRevenue">0</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer">
+                LR Booking & Transport Management System
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

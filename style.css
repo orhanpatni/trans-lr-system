@@ -1,0 +1,361 @@
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#dfe3e8;
+    font-size:12px;
+    padding:10px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:100%;
+}
+
+.main{
+    display:flex;
+    gap:10px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.top-header{
+    background:#d86f6f;
+    color:#fff;
+    padding:8px 15px;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+/* =========================
+   LEFT PANEL
+========================= */
+
+.left-panel{
+    flex:1;
+    background:#ececec;
+    padding:10px;
+    border:1px solid #cfcfcf;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.right-panel{
+    width:320px;
+    background:#ececec;
+    border:1px solid #999;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+    background:#edf2f7;
+    color:#234466;
+    font-weight:bold;
+    padding:6px 10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    border:1px solid #d8e0e7;
+}
+
+/* =========================
+   TOP BOOKING ROW
+========================= */
+
+.top-booking-row{
+    display:flex;
+    gap:15px;
+    margin-bottom:12px;
+}
+
+.field{
+    flex:1;
+}
+
+.small-field{
+    width:180px;
+}
+
+/* =========================
+   LABELS
+========================= */
+
+label{
+    display:block;
+    margin-bottom:4px;
+    font-weight:bold;
+    color:#333;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+select,
+textarea{
+    width:100%;
+    border:1px solid #bdbdbd;
+    border-radius:3px;
+    background:white;
+    padding:6px;
+    font-size:12px;
+}
+
+input,
+select{
+    height:32px;
+}
+
+textarea{
+    height:80px;
+    resize:vertical;
+}
+
+/* =========================
+   PARTY SECTION
+========================= */
+
+.party-section{
+    display:flex;
+    gap:15px;
+}
+
+.party-box{
+    flex:1;
+    border:1px solid #ccc;
+    background:#f8f8f8;
+    padding:10px;
+}
+
+.party-box h3{
+    margin-bottom:10px;
+    color:#234466;
+}
+
+.party-box input,
+.party-box textarea{
+    margin-bottom:8px;
+}
+
+/* =========================
+   ARTICLE SECTION
+========================= */
+
+.article-row{
+    display:grid;
+    grid-template-columns:
+        120px
+        100px
+        100px
+        180px
+        220px
+        120px
+        100px;
+    gap:8px;
+    align-items:center;
+}
+
+.add-btn{
+    background:#1f8fe8;
+    color:white;
+    border:none;
+    height:35px;
+    cursor:pointer;
+    border-radius:4px;
+    font-weight:bold;
+}
+
+.add-btn:hover{
+    background:#1477c4;
+}
+
+/* =========================
+   ARTICLE TABLE
+========================= */
+
+#articleTable{
+    width:100%;
+    margin-top:10px;
+    border-collapse:collapse;
+    background:white;
+}
+
+#articleTable th{
+    background:#edf2f7;
+}
+
+#articleTable th,
+#articleTable td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+
+/* =========================
+   WEIGHT ROW
+========================= */
+
+.weight-row{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+}
+
+/* =========================
+   BOTTOM ROW
+========================= */
+
+.bottom-row{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:12px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-section{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.save-btn{
+    width:140px;
+    height:42px;
+    border:none;
+    background:#1f8fe8;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+.save-btn:hover{
+    background:#1477c4;
+}
+
+.clear-btn{
+    width:140px;
+    height:42px;
+    border:none;
+    background:#999;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+.clear-btn:hover{
+    background:#777;
+}
+
+/* =========================
+   CHARGES PANEL
+========================= */
+
+.charge-header{
+    background:#edf2f7;
+    padding:8px;
+    font-weight:bold;
+    border-bottom:1px solid #bbb;
+}
+
+.charge-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px;
+    border-bottom:1px solid #ddd;
+}
+
+.charge-row label{
+    margin:0;
+}
+
+.charge-row input{
+    width:120px;
+    text-align:right;
+}
+
+.total-row{
+    background:#f5f5f5;
+    font-weight:bold;
+}
+
+.grand-total-row{
+    background:#dff0d8;
+    font-weight:bold;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1200px){
+
+    .main{
+        flex-direction:column;
+    }
+
+    .right-panel{
+        width:100%;
+    }
+
+    .party-section{
+        flex-direction:column;
+    }
+
+    .weight-row{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .bottom-row{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .article-row{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .button-section{
+        display:none;
+    }
+
+}

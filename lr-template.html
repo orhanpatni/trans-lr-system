@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+
+<title>LR Print</title>
+
+<link rel="stylesheet" href="print.css">
+
+</head>
+
+<body>
+
+<div class="copy copy1">
+    <div class="lr-content" id="copy1"></div>
+</div>
+
+<div class="copy copy2">
+    <div class="lr-content" id="copy2"></div>
+</div>
+
+<div class="copy copy3">
+    <div class="lr-content" id="copy3"></div>
+</div>
+
+<script>
+
+const data =
+JSON.parse(
+localStorage.getItem("lrData")
+);
+
+function buildCopy(el){
+
+document.getElementById(el).innerHTML = `
+
+<table class="lr-table">
+
+<tr>
+<td class="w40">
+From : <b>${data.fromBranch}</b>
+</td>
+
+<td class="w40">
+To : <b>${data.toBranch}</b>
+</td>
+
+<td class="w20">
+Freight Type :
+<b>${data.freightType}</b>
+</td>
+</tr>
+
+<tr>
+<td>
+Date : ${data.bookingDate}
+&nbsp;&nbsp;
+Time : ${data.bookingTime}
+</td>
+
+<td>
+LR No :
+<b>${data.lrNo}</b>
+</td>
+
+<td>
+Freight :
+${data.freight}
+</td>
+</tr>
+
+<tr>
+<td>
+CONSIGNOR :
+${data.consignorName}
+</td>
+
+<td>
+CONSIGNEE :
+${data.consigneeName}
+</td>
+
+<td>
+L R Charge :
+${data.lrCharge}
+</td>
+</tr>
+
+<tr>
+<td>
+MOBILE :
+${data.consignorMobile}
+</td>
+
+<td>
+MOBILE :
+${data.consigneeMobile}
+</td>
+
+<td rowspan="4"></td>
+</tr>
+
+<tr>
+<td>
+GSTN :
+${data.consignorGST}
+</td>
+
+<td>
+GSTN :
+${data.consigneeGST}
+</td>
+</tr>
+
+<tr>
+<td class="qty">
+<b>QTY</b><br>
+${data.artQty}
+</td>
+
+<td class="desc">
+<b>DESCRIPTION</b><br>
+${data.articleType}
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+
+Inv No :
+${data.invoiceNo}
+<br>
+
+Value :
+${data.declaredValue}
+<br>
+
+Actual Wt :
+${data.actualWt}
+<br>
+
+Charged Wt :
+${data.chargedWt}
+<br>
+
+Delivery At :
+${data.deliveryAt}
+
+</td>
+</tr>
+
+<tr>
+<td>
+Total :
+${data.artQty}
+</td>
+
+<td>
+Goods booked At Owner's risk and said to contain basis.
+</td>
+
+<td>
+Total :
+${data.grandTotal}
+</td>
+</tr>
+
+<tr>
+<td>
+Private Mark :
+${data.privateMark}
+</td>
+
+<td>
+Remark :
+${data.remarks}
+</td>
+
+<td>
+Ewaybill :
+${data.ewayBill}
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+Note : Please Do Not Make Any Payments Without Cash Receipt
+</td>
+
+<td>
+Booked By :
+${data.bookedBy}
+</td>
+</tr>
+
+</table>
+
+`;
+
+}
+
+buildCopy("copy1");
+buildCopy("copy2");
+buildCopy("copy3");
+
+window.onload = () => {
+
+setTimeout(() => {
+
+window.print();
+
+},500);
+
+};
+
+</script>
+
+</body>
+</html>

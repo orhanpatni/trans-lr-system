@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LR Booking</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="top-header">
+        LR BOOKING
+    </div>
+
+    <div class="main">
+
+        <!-- LEFT PANEL -->
+
+        <div class="left-panel">
+
+            <div class="section-title">
+                BOOKING DETAILS
+            </div>
+
+            <div class="top-booking-row">
+
+                <div class="field">
+                    <label>From Branch</label>
+                    <input
+                        type="text"
+                        id="fromBranch"
+                        placeholder="FROM BRANCH">
+                </div>
+
+                <div class="field">
+                    <label>To Branch</label>
+                    <input
+                        type="text"
+                        id="toBranch"
+                        placeholder="TO BRANCH">
+                </div>
+
+                <div class="small-field">
+                    <label>Freight Type</label>
+                    <select id="freightType">
+                        <option>TO PAY</option>
+                        <option>PAID</option>
+                        <option>TBB</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="top-booking-row">
+
+                <div class="field">
+                    <label>LR No</label>
+                    <input
+                        type="text"
+                        id="lrNo"
+                        value="LR-000001">
+                </div>
+
+                <div class="field">
+                    <label>Booking Date</label>
+                    <input
+                        type="date"
+                        id="bookingDate">
+                </div>
+
+                <div class="field">
+                    <label>Booking Time</label>
+                    <input
+                        type="time"
+                        id="bookingTime">
+                </div>
+
+            </div>
+
+            <!-- CONSIGNOR / CONSIGNEE -->
+
+            <div class="section-title">
+                CONSIGNOR / CONSIGNEE DETAILS
+            </div>
+
+            <div class="party-section">
+
+                <div class="party-box">
+
+                    <h3>CONSIGNOR</h3>
+
+                    <label>Name</label>
+                    <input
+                        type="text"
+                        id="consignorName">
+
+                    <label>Mobile</label>
+                    <input
+                        type="text"
+                        id="consignorMobile">
+
+                    <label>GST No</label>
+                    <input
+                        type="text"
+                        id="consignorGST">
+
+                    <label>Address</label>
+                    <textarea
+                        id="consignorAddress"></textarea>
+
+                </div>
+
+                <div class="party-box">
+
+                    <h3>CONSIGNEE</h3>
+
+                    <label>Name</label>
+                    <input
+                        type="text"
+                        id="consigneeName">
+
+                    <label>Mobile</label>
+                    <input
+                        type="text"
+                        id="consigneeMobile">
+
+                    <label>GST No</label>
+                    <input
+                        type="text"
+                        id="consigneeGST">
+
+                    <label>Address</label>
+                    <textarea
+                        id="consigneeAddress"></textarea>
+
+                </div>
+
+            </div>
+
+            <!-- ARTICLE DETAILS -->
+
+            <div class="section-title">
+                ARTICLE DETAILS |
+                TOTAL ART :
+                <span id="totalArt">0</span>
+            </div>
+
+            <div class="article-row">
+
+                <select id="chargeType">
+                    <option value="ARTICLE">
+                        ARTICLE
+                    </option>
+
+                    <option value="WEIGHT">
+                        WEIGHT
+                    </option>
+
+                    <option value="FIX">
+                        FIX
+                    </option>
+                </select>
+
+                <input
+                    type="number"
+                    id="artQty"
+                    placeholder="Art">
+
+                <input
+                    type="number"
+                    id="articleRate"
+                    placeholder="Art Rate">
+
+                <input
+                    type="text"
+                    id="articleType"
+                    placeholder="Article Type">
+
+                <input
+                    type="text"
+                    id="saidToContain"
+                    placeholder="Said To Contain">
+
+                <input
+                    type="number"
+                    id="artAmount"
+                    placeholder="Amount">
+
+                <button
+                    type="button"
+                    class="add-btn"
+                    onclick="addArticle()">
+                    Add
+                </button>
+
+            </div>
+
+            <table id="articleTable">
+
+                <thead>
+
+                <tr>
+                    <th>Art</th>
+                    <th>Article Type</th>
+                    <th>Said To Contain</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+
+                        <!-- WEIGHT DETAILS -->
+
+            <div class="section-title">
+                WEIGHT DETAILS
+            </div>
+
+            <div class="weight-row">
+
+                <div>
+                    <label>Actual Wt</label>
+                    <input
+                        type="number"
+                        id="actualWt"
+                        value="0">
+                </div>
+
+                <div>
+                    <label>Charged Wt</label>
+                    <input
+                        type="number"
+                        id="chargedWt"
+                        value="0">
+                </div>
+
+                <div>
+                    <label>Wt Rate</label>
+                    <input
+                        type="number"
+                        id="wtRate"
+                        value="0">
+                </div>
+
+                <div>
+                    <label>Wt Amount</label>
+                    <input
+                        type="number"
+                        id="wtAmt"
+                        value="0"
+                        readonly>
+                </div>
+
+                <div>
+                    <label>Fix Amount</label>
+                    <input
+                        type="number"
+                        id="fixAmt"
+                        value="0">
+                </div>
+
+            </div>
+
+            <!-- OTHER DETAILS -->
+
+            <div class="section-title">
+                OTHER DETAILS
+            </div>
+
+            <div class="bottom-row">
+
+                <div>
+                    <label>Invoice No</label>
+                    <input
+                        type="text"
+                        id="invoiceNo">
+                </div>
+
+                <div>
+                    <label>Declared Value</label>
+                    <input
+                        type="number"
+                        id="declaredValue">
+                </div>
+
+                <div>
+                    <label>Delivery At</label>
+                    <select id="deliveryAt">
+                        <option>Godown</option>
+                        <option>Door Delivery</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Private Mark</label>
+                    <input
+                        type="text"
+                        id="privateMark">
+                </div>
+
+                <div>
+                    <label>Remarks</label>
+                    <input
+                        type="text"
+                        id="remarks">
+                </div>
+
+            </div>
+
+            <div class="bottom-row">
+
+                <div>
+                    <label>Eway Bill No</label>
+                    <input
+                        type="text"
+                        id="ewayBill">
+                </div>
+
+                <div>
+                    <label>Booked By</label>
+                    <input
+                        type="text"
+                        id="bookedBy">
+                </div>
+
+            </div>
+
+            <div class="button-section">
+
+               <button
+    type="button"
+    class="save-btn"
+    onclick="saveAndPrint()">
+    Save & Print LR
+</button>
+
+                <button
+                    type="button"
+                    class="clear-btn"
+                    onclick="location.reload()">
+                    Clear Form
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+
+        <div class="right-panel">
+
+            <div class="charge-header">
+                Charges
+            </div>
+
+            <div class="charge-row">
+                <label>Freight</label>
+                <input
+                    type="number"
+                    id="freight"
+                    value="0">
+            </div>
+
+            <div class="charge-row">
+                <label>A.O.C</label>
+                <input
+                    type="number"
+                    id="aoc"
+                    value="0">
+            </div>
+
+            <div class="charge-row">
+                <label>R Charge</label>
+                <input
+                    type="number"
+                    id="rCharge"
+                    value="0">
+            </div>
+
+            <div class="charge-row">
+                <label>Hamali</label>
+                <input
+                    type="number"
+                    id="hamali"
+                    value="0">
+            </div>
+
+            <div class="charge-row">
+                <label>Door Delivery</label>
+                <input
+                    type="number"
+                    id="doorDelivery"
+                    value="0">
+            </div>
+
+            <div class="charge-row">
+                <label>L C</label>
+                <input
+                    type="number"
+                    id="lc"
+                    value="0">
+            </div>
+
+            <div class="charge-row">
+                <label>L R Charge</label>
+                <input
+                    type="number"
+                    id="lrCharge"
+                    value="10">
+            </div>
+
+            <div class="charge-row total-row">
+                <label>Total</label>
+                <input
+                    type="number"
+                    id="total"
+                    value="0"
+                    readonly>
+            </div>
+
+            <div class="charge-row grand-total-row">
+                <label>Grand Total</label>
+                <input
+                    type="number"
+                    id="grandTotal"
+                    value="0"
+                    readonly>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
