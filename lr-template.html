@@ -1,203 +1,209 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="utf-8">
-
 <title>LR Print</title>
-
 <link rel="stylesheet" href="print.css">
-
 </head>
 
 <body>
 
 <div class="copy copy1">
-    <div class="lr-content" id="copy1"></div>
+    <div id="copy1"></div>
 </div>
 
 <div class="copy copy2">
-    <div class="lr-content" id="copy2"></div>
+    <div id="copy2"></div>
 </div>
 
 <div class="copy copy3">
-    <div class="lr-content" id="copy3"></div>
+    <div id="copy3"></div>
 </div>
 
 <script>
 
-const data =
-JSON.parse(
-localStorage.getItem("lrData")
-);
+const data = JSON.parse(localStorage.getItem("lrData"));
 
-function buildCopy(el){
+function buildCopy(id){
 
-document.getElementById(el).innerHTML = `
+document.getElementById(id).innerHTML = `
+
+<div class="lr-box">
 
 <table class="lr-table">
 
+<!-- ROW 1 -->
 <tr>
-<td class="w40">
-From : <b>${data.fromBranch}</b>
-</td>
+    <td colspan="4">
+        From : <b>${data.fromBranch}</b>
+    </td>
 
-<td class="w40">
-To : <b>${data.toBranch}</b>
-</td>
+    <td colspan="4">
+        To : <b>${data.toBranch}</b>
+    </td>
 
-<td class="w20">
-Freight Type :
-<b>${data.freightType}</b>
-</td>
+    <td colspan="2">
+        Freight Type :
+    </td>
+
+    <td class="right bold">
+        ${data.freightType}
+    </td>
+</tr>
+
+<!-- ROW 2 -->
+<tr>
+    <td colspan="4">
+        Date : <b>${data.bookingDate}</b>
+        Time : <b>${data.bookingTime}</b>
+    </td>
+
+    <td colspan="4">
+        LR No : <b>${data.lrNo}</b>
+    </td>
+
+    <td colspan="2">
+        Freight
+    </td>
+
+    <td class="right">
+        ${data.freight}
+    </td>
+</tr>
+
+<!-- ROW 3 -->
+<tr>
+    <td colspan="4">
+        Consignor : ${data.consignorName}
+    </td>
+
+    <td colspan="4">
+        Consignee : ${data.consigneeName}
+    </td>
+
+    <td colspan="2">
+        LR Charge
+    </td>
+
+    <td class="right">
+        ${data.lrCharge}
+    </td>
+</tr>
+
+<!-- ROW 4 -->
+<tr>
+    <td colspan="4">
+        Mobile : ${data.consignorMobile}
+    </td>
+
+    <td colspan="4">
+        Mobile : ${data.consigneeMobile}
+    </td>
+
+    <td colspan="3" rowspan="4"></td>
+</tr>
+
+<!-- ROW 5 -->
+<tr>
+    <td colspan="4">
+        GSTN : ${data.consignorGST}
+    </td>
+
+    <td colspan="4">
+        GSTN : ${data.consigneeGST}
+    </td>
+</tr>
+
+<!-- HEADER -->
+<tr>
+    <td class="center bold">
+        QTY
+    </td>
+
+    <td colspan="5" class="center bold">
+        DESCRIPTION
+    </td>
+
+    <td colspan="2">
+        Inv No : ${data.invoiceNo}
+    </td>
+
+</tr>
+
+<!-- BODY -->
+<tr>
+    <td class="center">
+        ${data.artQty}
+    </td>
+
+    <td colspan="5" class="desc-box">
+        ${data.articleType}
+    </td>
+
+    <td colspan="2">
+        Value : ${data.declaredValue}<br>
+        Actual Wt : ${data.actualWt}<br>
+        Charged Wt : ${data.chargedWt}<br>
+        Delivery : ${data.deliveryAt}
+    </td>
+
+
+</tr>
+
+<!-- TOTAL -->
+<tr>
+    <td colspan="1">
+        Total : <b>${data.artQty}</b>
+    </td>
+    <td colspan="7" class="center">
+        Goods booked At Owner's risk and said to contain basis.
+        Subject to Mumbai Jurisdiction. E & OE
+    </td>
+
+    <td colspan="2" class="center bold">
+        TOTAL :
+    </td>
+
+    <td class="right total">
+        ${data.grandTotal}
+    </td>
+</tr>
+
+
+
+<!-- FOOTER -->
+<tr>
+    <td colspan="4">
+        Private Mark : ${data.privateMark}
+    </td>
+
+    <td colspan="3">
+        Remark : ${data.remarks}
+    </td>
+
+    <td colspan="2">
+        Ewaybill No : ${data.ewayBill}
+    </td>
+
+    <td colspan="2" class="center">
+        Non Negotiable
+    </td>
 </tr>
 
 <tr>
-<td>
-Date : ${data.bookingDate}
-&nbsp;&nbsp;
-Time : ${data.bookingTime}
-</td>
+    <td colspan="8" class="note">
+        Note : Please Do Not Make Any Payments Without Cash Receipt
+    </td>
 
-<td>
-LR No :
-<b>${data.lrNo}</b>
-</td>
-
-<td>
-Freight :
-${data.freight}
-</td>
-</tr>
-
-<tr>
-<td>
-CONSIGNOR :
-${data.consignorName}
-</td>
-
-<td>
-CONSIGNEE :
-${data.consigneeName}
-</td>
-
-<td>
-L R Charge :
-${data.lrCharge}
-</td>
-</tr>
-
-<tr>
-<td>
-MOBILE :
-${data.consignorMobile}
-</td>
-
-<td>
-MOBILE :
-${data.consigneeMobile}
-</td>
-
-<td rowspan="4"></td>
-</tr>
-
-<tr>
-<td>
-GSTN :
-${data.consignorGST}
-</td>
-
-<td>
-GSTN :
-${data.consigneeGST}
-</td>
-</tr>
-
-<tr>
-<td class="qty">
-<b>QTY</b><br>
-${data.artQty}
-</td>
-
-<td class="desc">
-<b>DESCRIPTION</b><br>
-${data.articleType}
-</td>
-</tr>
-
-<tr>
-<td colspan="2">
-
-Inv No :
-${data.invoiceNo}
-<br>
-
-Value :
-${data.declaredValue}
-<br>
-
-Actual Wt :
-${data.actualWt}
-<br>
-
-Charged Wt :
-${data.chargedWt}
-<br>
-
-Delivery At :
-${data.deliveryAt}
-
-</td>
-</tr>
-
-<tr>
-<td>
-Total :
-${data.artQty}
-</td>
-
-<td>
-Goods booked At Owner's risk and said to contain basis.
-</td>
-
-<td>
-Total :
-${data.grandTotal}
-</td>
-</tr>
-
-<tr>
-<td>
-Private Mark :
-${data.privateMark}
-</td>
-
-<td>
-Remark :
-${data.remarks}
-</td>
-
-<td>
-Ewaybill :
-${data.ewayBill}
-</td>
-</tr>
-
-<tr>
-<td colspan="2">
-Note : Please Do Not Make Any Payments Without Cash Receipt
-</td>
-
-<td>
-Booked By :
-${data.bookedBy}
-</td>
+    <td colspan="3">
+        Booked By : ${data.bookedBy}
+    </td>
 </tr>
 
 </table>
 
+</div>
 `;
-
 }
 
 buildCopy("copy1");
@@ -205,13 +211,9 @@ buildCopy("copy2");
 buildCopy("copy3");
 
 window.onload = () => {
-
-setTimeout(() => {
-
-window.print();
-
-},500);
-
+    setTimeout(() => {
+        window.print();
+    }, 500);
 };
 
 </script>
